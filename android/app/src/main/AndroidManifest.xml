@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.daybyday.my_gauge">
+    package="com.daybyday.my_gague">
    <application
         android:label="게이지 계산기"
         android:name="${applicationName}"
