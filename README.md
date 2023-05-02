@@ -1,16 +1,15 @@
 # my_gauge
 
-A new Flutter project.
+뜨개인을 위한 게이지 계산기입니다. 
 
-## Getting Started
+플러터(flutter)로 제작/배포되었습니다. 
 
-This project is a starting point for a Flutter application.
+## 현재 기능 
+- 도안의 게이지와 내 게이지를 비교하여 코수/단수 계산
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 추가 예정 기능
+- cm 환산 
+- 단수와 코수 화면 분리
+- 제작정보 화면
+- 뜨개 작품별 게이지 계산/저장
+- 무료도안 링크 모음
