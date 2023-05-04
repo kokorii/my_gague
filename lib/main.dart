@@ -9,15 +9,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "check gague",
-        theme: ThemeData(
-          brightness: Brightness.light,
-          primaryColor: Colors.lightBlue[800],
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: Scaffold(
-          body: MyGagueApp(),
-        ));
+      title: "check gague",
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.lightBlue[800],
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: MyGagueApp(),
+    );
   }
 }
 
@@ -65,8 +64,6 @@ class _MyGagueState extends State<MyGagueApp> {
               title: const Text('Page 1'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => CalPage()));
               },
             ),
             ListTile(
@@ -98,12 +95,6 @@ class _MyGagueState extends State<MyGagueApp> {
           child: Center(
         child: CalPage(),
       )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print("press floating");
-        },
-        child: Icon(Icons.refresh),
-      ),
     );
   }
 }
