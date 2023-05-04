@@ -253,6 +253,9 @@ class _MyGagueState extends State<MyGagueApp> {
                             castonst != null) {
                           res_st = castonst / packst * myst;
                         }
+
+                        //키보드 숨기기
+                        FocusManager.instance.primaryFocus?.unfocus();
                       });
                     },
                   ),
