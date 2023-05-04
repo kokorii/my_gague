@@ -120,19 +120,25 @@ class _MyGagueState extends State<MyGagueApp> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Flexible(
-                          child: TextField(
-                        keyboardType: TextInputType.number,
-                        controller: my_st,
-                        decoration: InputDecoration(helperText: "내 스와치의 코수"),
+                          child: SizedBox(
+                        width: 150,
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          controller: my_st,
+                          decoration: InputDecoration(hintText: "내 스와치의 코수"),
+                        ),
                       )),
                       Flexible(
-                          child: TextField(
-                              keyboardType: TextInputType.number,
-                              controller: my_row,
-                              decoration:
-                                  InputDecoration(helperText: "내 스와치의 단수"))),
+                          child: SizedBox(
+                        width: 150,
+                        child: TextField(
+                            keyboardType: TextInputType.number,
+                            controller: my_row,
+                            decoration: InputDecoration(hintText: "내 스와치의 단수")),
+                      )),
                     ],
                   ),
                 ),
@@ -142,19 +148,26 @@ class _MyGagueState extends State<MyGagueApp> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Flexible(
-                          child: TextField(
-                        keyboardType: TextInputType.number,
-                        controller: pack_st,
-                        decoration: InputDecoration(helperText: "도안 게이지의 코수"),
+                          child: SizedBox(
+                        width: 150,
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          controller: pack_st,
+                          decoration: InputDecoration(hintText: "도안 게이지의 코수"),
+                        ),
                       )),
                       Flexible(
-                          child: TextField(
-                              keyboardType: TextInputType.number,
-                              controller: pack_row,
-                              decoration:
-                                  InputDecoration(helperText: "도안 게이지의 단수"))),
+                          child: SizedBox(
+                        width: 150,
+                        child: TextField(
+                            keyboardType: TextInputType.number,
+                            controller: pack_row,
+                            decoration:
+                                InputDecoration(hintText: "도안 게이지의 단수")),
+                      )),
                     ],
                   ),
                 ),
@@ -164,20 +177,26 @@ class _MyGagueState extends State<MyGagueApp> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Flexible(
-                          child: TextField(
-                        keyboardType: TextInputType.number,
-                        controller: caston_st,
-                        decoration:
-                            InputDecoration(helperText: "잡아야 하는(떠야하는) 코수"),
+                          child: SizedBox(
+                        width: 150,
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          controller: caston_st,
+                          decoration:
+                              InputDecoration(hintText: "잡아야 하는(떠야하는) 코수"),
+                        ),
                       )),
                       Flexible(
-                          child: TextField(
-                              keyboardType: TextInputType.number,
-                              controller: caston_row,
-                              decoration:
-                                  InputDecoration(helperText: "떠야하는 단수"))),
+                          child: SizedBox(
+                        width: 150,
+                        child: TextField(
+                            keyboardType: TextInputType.number,
+                            controller: caston_row,
+                            decoration: InputDecoration(hintText: "떠야하는 단수")),
+                      )),
                     ],
                   ),
                 ),
@@ -250,6 +269,22 @@ class _MyGagueState extends State<MyGagueApp> {
           ],
         ),
       )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            res_row = 0.0;
+            res_st = 0.0;
+          });
+        },
+        child: Icon(Icons.refresh),
+      ),
     );
+  }
+
+  void dispose() {
+    my_row.dispose();
+    my_st.dispose();
+
+    super.dispose();
   }
 }
