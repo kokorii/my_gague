@@ -17,10 +17,16 @@ class _CalPage extends State<CalPage> {
   TextEditingController castonStController =
       TextEditingController(); // cast on st
 
-  var myst, myrow, packst, packrow, castonst, castonrow;
-
-  double resSt = 0;
-  double resRow = 0;
+  Map<String, double> calDict = {
+    'mySt': 0,
+    'myRow': 0,
+    'packSt': 0,
+    'packRow': 0,
+    'castOnSt': 0,
+    'castOnRow': 0,
+    'resSt': 0,
+    'resRow': 0
+  };
 
   @override
   void dispose() {
@@ -138,44 +144,54 @@ class _CalPage extends State<CalPage> {
                 backgroundColor: MaterialStateProperty.all(Colors.blue)),
             onPressed: () {
               setState(() {
-                myStController.value.text.isNotEmpty
-                    ? myst = double.parse(myStController.value.text)
+                print("==setState==");
+                print("before");
+                print(calDict);
+
+                calDict['mySt'] = myStController.value.text.isEmpty
+                    ? 0
+                    : double.parse(myStController.value.text);
+
+                calDict['myRow'] = myRowController.value.text.isEmpty
+                    ? 0
+                    : double.parse(myRowController.value.text);
+
+                calDict['packSt'] = packStController.value.text.isNotEmpty
+                    ? double.parse(packStController.value.text)
                     : 0;
 
-                myRowController.value.text.isNotEmpty
-                    ? myrow = double.parse(myRowController.value.text)
+                calDict['packRow'] = packRowController.value.text.isNotEmpty
+                    ? double.parse(packRowController.value.text)
+                    : 0;
+                calDict['castOnSt'] = castonStController.value.text.isNotEmpty
+                    ? double.parse(castonStController.value.text)
+                    : 0;
+                calDict['castOnRow'] = castonRowController.value.text.isNotEmpty
+                    ? double.parse(castonRowController.value.text)
                     : 0;
 
-                packStController.value.text.isNotEmpty
-                    ? packst = double.parse(packStController.value.text)
-                    : 0;
-
-                packRowController.value.text.isNotEmpty
-                    ? packrow = double.parse(packRowController.value.text)
-                    : 0;
-
-                castonStController.value.text.isNotEmpty
-                    ? castonst = double.parse(castonStController.value.text)
-                    : 0;
-
-                castonRowController.value.text.isNotEmpty
-                    ? castonrow = double.parse(castonRowController.value.text)
-                    : 0;
-
+                print("after");
+                print(calDict);
                 //키보드 숨기기
                 FocusManager.instance.primaryFocus?.unfocus();
 
-                print('$myrow, $myst \n '
-                    '$packrow, $packst');
-                print('$castonrow, $castonst');
+                if (calDict['myRow'] != 0 &&
+                    calDict['packRow'] != 0 &&
+                    calDict['castOnRow'] != 0) {
+                  calDict['resRow'] = calDict['castOnRow']! /
+                      calDict['packRow']! *
+                      calDict['myRow']!;
 
-                print("cal result: $resSt, $resRow");
-
-                if (myrow != 0 && packrow != 0 && castonrow != 0) {
-                  resRow = castonrow / packrow * myrow;
+                  print("this is row cal");
                 }
-                if (myst != 0 && packst != 0 && castonst != 0) {
-                  resSt = castonst / packst * myst;
+                if (calDict['mySt'] != 0 &&
+                    calDict['packSt'] != 0 &&
+                    calDict['castOnSt'] != 0) {
+                  calDict['resSt'] = calDict['castOnSt']! /
+                      calDict['packSt']! *
+                      calDict['mySt']!;
+
+                  print("this is St cal");
                 }
               });
             },
@@ -184,7 +200,7 @@ class _CalPage extends State<CalPage> {
         Padding(
           padding: EdgeInsets.all(15.0),
           child: Text(
-            '떠야 할 코수: $resSt,\n떠야 할 단수: $resRow',
+            '떠야 할 코수: ${calDict['resSt']},\n 떠야 할 단수: ${calDict['resRow']}',
             style: TextStyle(fontSize: 20),
           ),
         ),
@@ -200,15 +216,16 @@ class _CalPage extends State<CalPage> {
                 castonStController.clear();
                 castonRowController.clear();
 
-                myst = 0;
-                myrow = 0;
-                packst = 0;
-                packrow = 0;
-                castonst = 0;
-                castonrow = 0;
-
-                resRow = 0;
-                resSt = 0;
+                calDict = {
+                  'mySt': 0,
+                  'myRow': 0,
+                  'packSt': 0,
+                  'packRow': 0,
+                  'castOnSt': 0,
+                  'castOnRow': 0,
+                  'resSt': 0,
+                  'resRow': 0
+                };
               });
             },
             child: Row(children: [Icon(Icons.refresh), Text("다시하기")]),
