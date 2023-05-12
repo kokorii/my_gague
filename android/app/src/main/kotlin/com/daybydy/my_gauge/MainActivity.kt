@@ -1,4 +1,4 @@
-package com.daybyday.my_gague
+package com.daybydy.my_gauge
 
 import io.flutter.embedding.android.FlutterActivity
 
