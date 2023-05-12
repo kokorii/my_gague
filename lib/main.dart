@@ -57,24 +57,24 @@ class _MyGagueState extends State<MyGagueApp> {
                 ),
               ),
             ),
-            ListTile(
-              leading: Icon(
-                Icons.home,
-              ),
-              title: const Text('Page 1'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.train,
-              ),
-              title: const Text('Page 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(
+            //     Icons.home,
+            //   ),
+            //   title: const Text('Page 1'),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
+            // ListTile(
+            //   leading: Icon(
+            //     Icons.train,
+            //   ),
+            //   title: const Text('Page 2'),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
             AboutListTile(
               icon: Icon(
                 Icons.info,
