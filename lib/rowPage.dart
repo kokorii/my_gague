@@ -67,7 +67,10 @@ class _RowPage extends State<RowPage> {
             padding: EdgeInsets.only(top: 20),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[Text("뜨고 싶은 단수"), Text("내가 떠야할 단수는?")])),
+                children: <Widget>[
+                  Text("뜨고 싶은 단수 or CM"),
+                  Text("내가 떠야할 단수는?")
+                ])),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -170,9 +173,7 @@ class _RowPage extends State<RowPage> {
                   print("this is row cal");
                 }
 
-                if (calDict['myRow'] != 0 &&
-                    //calDict['packRow'] != 0 &&
-                    calDict['cmRow'] != 0) {
+                if (calDict['myRow'] != 0 && calDict['cmRow'] != 0) {
                   calDict['resCmRow'] =
                       double.parse(myRowController.value.text) /
                           10 *

@@ -9,6 +9,7 @@ class _StPage extends State<StPage> {
   TextEditingController myStController = TextEditingController(); // 내 코수
 
   TextEditingController packStController = TextEditingController(); // 도안 코수
+  TextEditingController cmStController = TextEditingController(); // 떠야 할 cm
 
   TextEditingController castonStController =
       TextEditingController(); // cast on st
@@ -17,7 +18,9 @@ class _StPage extends State<StPage> {
     'mySt': 0,
     'packSt': 0,
     'castOnSt': 0,
+    'cmSt': 0,
     'resSt': 0,
+    'resCmSt': 0,
   };
 
   @override
@@ -30,6 +33,11 @@ class _StPage extends State<StPage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[Text("내 스와치의 코수"), Text("도안 게이지의 코수")])),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -57,6 +65,14 @@ class _StPage extends State<StPage> {
           ),
         ),
         Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text("뜨고 싶은 코수 or CM"),
+                  Text("내가 떠야할 코수는?")
+                ])),
+        Padding(
           padding: EdgeInsets.all(10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -67,7 +83,45 @@ class _StPage extends State<StPage> {
                 child: TextField(
                   keyboardType: TextInputType.number,
                   controller: castonStController,
-                  decoration: InputDecoration(hintText: "잡아야하는 코수"),
+                  decoration: InputDecoration(hintText: "도안상 떠야하는 코수"),
+                ),
+              )),
+              Flexible(
+                  child: SizedBox(
+                width: 150,
+                child: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    '떠야 할 코수: ${calDict['resSt']}',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              )),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                  child: SizedBox(
+                width: 150,
+                child: TextField(
+                    keyboardType: TextInputType.number,
+                    controller: cmStController,
+                    decoration: InputDecoration(hintText: "뜨고싶은 cm")),
+              )),
+              Flexible(
+                  child: SizedBox(
+                width: 150,
+                child: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    '떠야 할 코수: ${calDict['resCmSt']}',
+                    style: TextStyle(fontSize: 15),
+                  ),
                 ),
               )),
             ],
@@ -103,6 +157,10 @@ class _StPage extends State<StPage> {
                     ? double.parse(castonStController.value.text)
                     : 0;
 
+                calDict['cmSt'] = cmStController.value.text.isNotEmpty
+                    ? double.parse(cmStController.value.text)
+                    : 0;
+
                 print("after");
                 print(calDict);
                 //키보드 숨기기
@@ -117,15 +175,14 @@ class _StPage extends State<StPage> {
 
                   print("this is St cal");
                 }
+
+                if (calDict['mySt'] != 0 && calDict['cmSt'] != 0) {
+                  calDict['resCmSt'] = double.parse(myStController.value.text) /
+                      10 *
+                      double.parse(cmStController.value.text);
+                }
               });
             },
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(15.0),
-          child: Text(
-            '떠야 할 코수: ${calDict['resSt']}',
-            style: TextStyle(fontSize: 20),
           ),
         ),
         Padding(
@@ -136,12 +193,15 @@ class _StPage extends State<StPage> {
                 myStController.clear();
                 packStController.clear();
                 castonStController.clear();
+                cmStController.clear();
 
                 calDict = {
                   'mySt': 0,
                   'packSt': 0,
                   'castOnSt': 0,
+                  'cmSt': 0,
                   'resSt': 0,
+                  'resCmSt': 0,
                 };
               });
             },
