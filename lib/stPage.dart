@@ -32,7 +32,7 @@ class _StPage extends State<StPage> {
       children: [
         Padding(
             padding: EdgeInsets.only(top: 30),
-            child: Text("내 스와치의 게이지를 입력해주세요(코수, 단수 순서)")),
+            child: Text("내 스와치의 코수를 입력해주세요")),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -52,7 +52,7 @@ class _StPage extends State<StPage> {
         ),
         Padding(
             padding: EdgeInsets.only(top: 30),
-            child: Text("도안의 게이지를 입력해주세요(코수, 단수 순서)")),
+            child: Text("도안 게이지의 코수를 입력해주세요")),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -71,8 +71,7 @@ class _StPage extends State<StPage> {
           ),
         ),
         Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Text("패키지의 시작(cast-on)코수 또는 단수 ")),
+            padding: EdgeInsets.only(top: 30), child: Text("떠야하는(잡아야하는) 코수")),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -84,7 +83,7 @@ class _StPage extends State<StPage> {
                 child: TextField(
                   keyboardType: TextInputType.number,
                   controller: castonStController,
-                  decoration: InputDecoration(hintText: "잡아야 하는(떠야하는) 코수"),
+                  decoration: InputDecoration(hintText: "잡아야하는 코수"),
                 ),
               )),
             ],
@@ -141,7 +140,7 @@ class _StPage extends State<StPage> {
         Padding(
           padding: EdgeInsets.all(15.0),
           child: Text(
-            '떠야 할 코수: ${calDict['resSt']},}',
+            '떠야 할 코수: ${calDict['resSt']}',
             style: TextStyle(fontSize: 20),
           ),
         ),

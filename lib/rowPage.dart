@@ -32,7 +32,7 @@ class _RowPage extends State<RowPage> {
       children: [
         Padding(
             padding: EdgeInsets.only(top: 30),
-            child: Text("내 스와치의 게이지를 입력해주세요(코수, 단수 순서)")),
+            child: Text("내 스와치의 단수를 입력해주세요")),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -51,7 +51,7 @@ class _RowPage extends State<RowPage> {
         ),
         Padding(
             padding: EdgeInsets.only(top: 30),
-            child: Text("도안의 게이지를 입력해주세요(코수, 단수 순서)")),
+            child: Text("도안 게이지의 단수를 입력해주세요")),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -68,9 +68,7 @@ class _RowPage extends State<RowPage> {
             ],
           ),
         ),
-        Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Text("패키지의 시작(cast-on)코수 또는 단수 ")),
+        Padding(padding: EdgeInsets.only(top: 30), child: Text("떠야하는 단수 ")),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
