@@ -61,16 +61,16 @@ class _MyGagueState extends State<MyGagueApp> {
                     ),
                   ),
                 ),
-                // ListTile(
-                //   leading: Icon(
-                //     Icons.home,
-                //   ),
-                //   title: const Text('게이지란?'),
-                //   onTap: () {
-                //     Navigator.pop(context);
-                //     RowPage();
-                //   },
-                // ),
+                ListTile(
+                  leading: Icon(
+                    Icons.home,
+                  ),
+                  title: const Text('게이지 계산기'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    RowPage();
+                  },
+                ),
                 // ListTile(
                 //   leading: Icon(
                 //     Icons.train,
