@@ -65,9 +65,10 @@ class _MyGagueState extends State<MyGagueApp> {
                 //   leading: Icon(
                 //     Icons.home,
                 //   ),
-                //   title: const Text('Page 1'),
+                //   title: const Text('게이지란?'),
                 //   onTap: () {
                 //     Navigator.pop(context);
+                //     RowPage();
                 //   },
                 // ),
                 // ListTile(

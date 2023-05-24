@@ -31,9 +31,6 @@ class _StPage extends State<StPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Text("내 스와치의 코수를 입력해주세요")),
-        Padding(
           padding: EdgeInsets.all(10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -47,17 +44,6 @@ class _StPage extends State<StPage> {
                   decoration: InputDecoration(hintText: "내 스와치의 코수"),
                 ),
               )),
-            ],
-          ),
-        ),
-        Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Text("도안 게이지의 코수를 입력해주세요")),
-        Padding(
-          padding: EdgeInsets.all(10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
               Flexible(
                   child: SizedBox(
                 width: 150,
@@ -70,8 +56,6 @@ class _StPage extends State<StPage> {
             ],
           ),
         ),
-        Padding(
-            padding: EdgeInsets.only(top: 30), child: Text("떠야하는(잡아야하는) 코수")),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(

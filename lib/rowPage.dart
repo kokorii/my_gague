@@ -10,6 +10,8 @@ class _RowPage extends State<RowPage> {
 
   TextEditingController packRowController = TextEditingController(); // 도안 단수
 
+  TextEditingController cmRowController = TextEditingController(); // 떠야 할 cm
+
   TextEditingController castonRowController =
       TextEditingController(); // cast on row
 
@@ -17,7 +19,9 @@ class _RowPage extends State<RowPage> {
     'myRow': 0,
     'packRow': 0,
     'castOnRow': 0,
-    'resRow': 0
+    'cmRow': 0,
+    'resRow': 0,
+    'resCmRow': 0,
   };
 
   @override
@@ -31,8 +35,10 @@ class _RowPage extends State<RowPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Text("내 스와치의 단수를 입력해주세요")),
+            padding: EdgeInsets.only(top: 20),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[Text("내 스와치의 단수"), Text("도안 게이지의 단수")])),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -46,17 +52,6 @@ class _RowPage extends State<RowPage> {
                     controller: myRowController,
                     decoration: InputDecoration(hintText: "내 스와치의 단수")),
               )),
-            ],
-          ),
-        ),
-        Padding(
-            padding: EdgeInsets.only(top: 30),
-            child: Text("도안 게이지의 단수를 입력해주세요")),
-        Padding(
-          padding: EdgeInsets.all(10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
               Flexible(
                   child: SizedBox(
                 width: 150,
@@ -68,7 +63,11 @@ class _RowPage extends State<RowPage> {
             ],
           ),
         ),
-        Padding(padding: EdgeInsets.only(top: 30), child: Text("떠야하는 단수 ")),
+        Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[Text("뜨고 싶은 단수"), Text("내가 떠야할 단수는?")])),
         Padding(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -80,7 +79,45 @@ class _RowPage extends State<RowPage> {
                 child: TextField(
                     keyboardType: TextInputType.number,
                     controller: castonRowController,
-                    decoration: InputDecoration(hintText: "떠야하는 단수")),
+                    decoration: InputDecoration(hintText: "뜨고싶은 단수")),
+              )),
+              Flexible(
+                  child: SizedBox(
+                width: 150,
+                child: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    '떠야 할 단수: ${calDict['resRow']}',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
+              )),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Flexible(
+                  child: SizedBox(
+                width: 150,
+                child: TextField(
+                    keyboardType: TextInputType.number,
+                    controller: cmRowController,
+                    decoration: InputDecoration(hintText: "뜨고싶은 cm")),
+              )),
+              Flexible(
+                  child: SizedBox(
+                width: 150,
+                child: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    '떠야 할 단수: ${calDict['resCmRow']}',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                ),
               )),
             ],
           ),
@@ -114,6 +151,10 @@ class _RowPage extends State<RowPage> {
                     ? double.parse(castonRowController.value.text)
                     : 0;
 
+                calDict['cmRow'] = cmRowController.value.text.isNotEmpty
+                    ? double.parse(cmRowController.value.text)
+                    : 0;
+
                 print("after");
                 print(calDict);
                 //키보드 숨기기
@@ -128,15 +169,17 @@ class _RowPage extends State<RowPage> {
 
                   print("this is row cal");
                 }
+
+                if (calDict['myRow'] != 0 &&
+                    //calDict['packRow'] != 0 &&
+                    calDict['cmRow'] != 0) {
+                  calDict['resCmRow'] =
+                      double.parse(myRowController.value.text) /
+                          10 *
+                          double.parse(cmRowController.value.text);
+                }
               });
             },
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(15.0),
-          child: Text(
-            '떠야 할 단수: ${calDict['resRow']}',
-            style: TextStyle(fontSize: 20),
           ),
         ),
         Padding(
@@ -147,12 +190,15 @@ class _RowPage extends State<RowPage> {
                 myRowController.clear();
                 packRowController.clear();
                 castonRowController.clear();
+                cmRowController.clear();
 
                 calDict = {
                   'myRow': 0,
                   'packRow': 0,
                   'castOnRow': 0,
-                  'resRow': 0
+                  'cmRow': 0,
+                  'resRow': 0,
+                  'resCmRow': 0,
                 };
               });
             },
